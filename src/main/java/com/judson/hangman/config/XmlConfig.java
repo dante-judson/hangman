@@ -2,18 +2,14 @@ package com.judson.hangman.config;
 
 
 import java.io.File;
+import java.nio.file.Paths;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.ResourceUtils;
 
 import com.judson.hangman.dto.HangmanDTO;
@@ -21,9 +17,6 @@ import com.judson.hangman.dto.HangmanDTO;
 @Configuration
 public class XmlConfig {
 
-	@Autowired
-	private ResourceLoader resourceLoader;
-	
 	@Bean
 	public HangmanDTO createHangman() {
 		HangmanDTO hangman = new HangmanDTO();
@@ -32,15 +25,12 @@ public class XmlConfig {
 		JAXBContext jaxbContext;
 		
 		try {
-			Resource resource = resourceLoader.getResource("classpath:hangman.xml");
-//			xmlFile = ResourceUtils.getFile("classpath:hangman.xml");
-//			xmlFile = ResourceUtils.get 
-			resource.getInputStream();
-			xmlFile = resource.getFile();
+			xmlFile = ResourceUtils.getFile(Paths.get("src/main/resources").toAbsolutePath().toString()+"/hangman.xml");
 			jaxbContext = JAXBContext.newInstance(HangmanDTO.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			hangman = (HangmanDTO) unmarshaller.unmarshal(xmlFile);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			throw new BeanCreationException(e.getMessage());
 		}
 		
