@@ -1,4 +1,5 @@
 
+
 # Hangman
 This project is the backend for the Hangman game.  
 
@@ -53,3 +54,11 @@ When you made many attempts and missed more than 5 letters you will receive a `B
 	
 That meaning you lost the game.
 If your word came completely, you won the game.
+
+# Finally 
+If you want to see this project deployed, with the frontend, please visit [https://judson-hangman-ui.herokuapp.com](https://judson-hangman-ui.herokuapp.com/) and enjoy. : )
+
+# Contact 
+
+[LinkedIn](https://www.linkedin.com/in/dante-judson-71507b132/) - Dante Judson
+[Gmail](mailto:dantejgl@gmail.com) - dantejgl@gmail.com
